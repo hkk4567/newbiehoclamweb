@@ -95,6 +95,7 @@
             <div class="col col-1">First Name</div>
             <div class="col col-4">Email</div>
             <div class="col col-4">Address</div>
+            <div class="col col-1">action</div>
           </li>
           <% for (var i = 0; i < data.length; i++) { %>
             <li class="table-row">
@@ -102,6 +103,10 @@
               <div class="col col-1" data-label="Customer Name"><%= data[i].firstName %></div>
               <div class="col col-4" data-label="Amount"><%= data[i].email %></div>
               <div class="col col-4" data-label="Payment Status"><%= data[i].address %></div>
+              <div class="col col-1" data-label="Payment Status">
+                <button type="button">Edit</button>
+                <button type="button">Remove</button>
+              </div>
             </li>
           <% } %>
         </ul>
