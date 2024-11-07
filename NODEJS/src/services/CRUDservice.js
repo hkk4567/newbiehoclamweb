@@ -89,8 +89,7 @@ let updateUserCRUD = (data) => {
 
                 await user.save();
 
-                let allUsers = await db.User.findAll();
-                resolve(allUsers);
+                resolve("success");
             } else {
                 resolve("User not found");
             }

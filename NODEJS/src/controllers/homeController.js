@@ -50,11 +50,9 @@ let getEditCRUD = async (req, res) => {
 
 let putCRUD = async (req, res) => {
     let data = req.body;
-    let allUsers = await CRUDservice.updateUserCRUD(data);
+    await CRUDservice.updateUserCRUD(data);
 
-    return res.render('display-crud.ejs', {
-        data: allUsers,
-    });
+    return res.redirect("/get-crud");
 }
 
 module.exports = {
