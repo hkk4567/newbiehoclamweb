@@ -120,7 +120,7 @@
               <div class="col col-4" data-label="Address"><p class="text-content"><%= data[i].address %></p></div>
               <div class="col col-1" data-label="Action">
                 <a href="/edit-crud?id=<%= data[i].id %>" class="btn-edit" type="button" style="width: 100%; margin-bottom: 10px;">Edit</a>
-                <a href="" class="btn-remove" type="button" style="width: 100%;">Remove</a>
+                <a href="/delete-crud?id=<%= data[i].id %>" class="btn-remove" type="button" style="width: 100%;">Remove</a>
               </div>
             </li>
           <% } %>

@@ -100,9 +100,27 @@ let updateUserCRUD = (data) => {
     });
 }
 
+let deleteUserById = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findByPk(userId);
+            if (user) {
+                await user.destroy();
+                resolve("success");
+            } else {
+                resolve("User not found");
+            }
+            
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
 module.exports = {
     createNewUser: createNewUser,
     getAllUsers: getAllUsers,
     getUserByInfo: getUserByInfo,
     updateUserCRUD: updateUserCRUD,
+    deleteUserById: deleteUserById,
 }
