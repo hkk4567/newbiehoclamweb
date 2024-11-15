@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 
-import '../../../node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css';
-import '../../../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css';
-import '../../../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css';
-import '../../../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css';
+import '@fortawesome/fontawesome-free-webfonts/css/fontawesome.css';
+import '@fortawesome/fontawesome-free-webfonts/css/fa-brands.css';
+import '@fortawesome/fontawesome-free-webfonts/css/fa-solid.css';
+import '@fortawesome/fontawesome-free-webfonts/css/fa-regular.css';
 
 import * as actions from "../../store/actions";
 import './Login.scss';
