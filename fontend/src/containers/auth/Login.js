@@ -18,17 +18,33 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            isShowPassword: false
+            isShowPassword: false,
+            errMsg: ''
         }
     }
 
     handleLogin = async () => {
-        console.log('email: ' + this.state.email + ' password: ' + this.state.password)
+        this.setState({
+            errMsg: ''
+        });
 
         try {
-            await handleLoginAPI(this.state.email, this.state.password);
-        } catch (e) {
-            console.log(e);
+           let data = await handleLoginAPI(this.state.email, this.state.password);
+            if (data && data.errCode !== 0) {
+                this.setState({ errMsg: data.errMsg });
+            } 
+            if (data && data.errcode === 0) {
+                this.props.userLoginSuccess(data.user)
+                console.log('login success');
+            }   
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
+                    this.setState({
+                        errMsg: error.response.data.message
+                    });
+                }
+            }
         }
     }
 
@@ -93,6 +109,9 @@ class Login extends Component {
                                             onClick={() => this.handleShowPasswordChange()}
                                         ><i className={this.state.isShowPassword? "fa fa-eye-slash icon-custom" : "fa fa-eye icon-custom"}></i></span>
                                     </div>
+                                    <div>
+                                        <p className="text-danger">{this.state.errMsg}</p>
+                                    </div>
                                 </div>
                                 <div className="row px-3 mb-4 space-between">
                                     <div className="custom-control custom-checkbox custom-control-inline flex width-auto">
@@ -136,8 +155,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        // userLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
     };
 };
 
