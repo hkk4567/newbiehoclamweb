@@ -10,7 +10,7 @@ import '@fortawesome/fontawesome-free-webfonts/css/fa-regular.css';
 import * as actions from "../../store/actions";
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-import handleLoginAPI from '../../services/userService';
+import {handleLoginAPI} from '../../services/userService';
 
 class Login extends Component {
     constructor(props) {

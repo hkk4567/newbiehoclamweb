@@ -20,7 +20,7 @@ let handleLogin = async (req, res) => {
 }
 
 let handleGetAllUser = async (req, res) => {
-    let id = req.body.id;
+    let id = req.query.id;
     let users = await userservice.getAllUsers(id);
     if (!id ) {
         return res.status(500).json({
